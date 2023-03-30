@@ -1,7 +1,7 @@
 import { useState } from "react"
 import UserList from "./UserList";
-import UserModal from "./UserModal";
 import UserForm from "./UserForm";
+import ErrorModal from "./ErrorModal";
 
 const User = () => {
 
@@ -59,13 +59,13 @@ const User = () => {
 
                 {/* user list containing item */}
 
-                {users.length && <UserList users={users} deleteUser={deleteUser} />}
+                {users.length != 0 && <UserList users={users} deleteUser={deleteUser} />}
 
                 {users.length == 0 && <div className="p-3 bg-white rounded-md"> no users </div>}
 
                 {/* deactivated user modal */}
                 {
-                    isUserModalShown && <UserModal messages={errorMessages} closeModal={closeModal} />
+                    isUserModalShown && <ErrorModal messages={errorMessages} closeModal={closeModal} />
                 }
             </div>
         </section>
